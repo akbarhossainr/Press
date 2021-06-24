@@ -11,5 +11,15 @@
     "require": {},
     "require-dev": {
         "orchestra/testbench": "^5.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "akbarhossainr\\Press": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "akbarhossainr\\Prss\\Tests": "tests/"
+        }
     }
 }
