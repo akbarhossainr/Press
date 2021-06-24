@@ -8,18 +8,20 @@
             "email": "akbarhossain15@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "erusev/parsedown": "^1.7"
+    },
     "require-dev": {
         "orchestra/testbench": "^5.19"
     },
     "autoload": {
         "psr-4": {
-            "akbarhossainr\\Press": "src/"
+            "akbarhossainr\\Press\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "akbarhossainr\\Prss\\Tests": "tests/"
+            "akbarhossainr\\Press\\Tests\\": "tests/"
         }
     }
 }

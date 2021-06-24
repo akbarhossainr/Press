@@ -1,5 +1,5 @@
 <?php
-namespace akbahossair\Press\Tests;
+namespace akbarhossainr\Press\Tests;
 
 use Orchestra\Testbench\TestCase;
 
