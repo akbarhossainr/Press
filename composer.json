@@ -1,0 +1,15 @@
+{
+    "name": "akbarhossainr/press",
+    "description": "A markdown-parsed blog for laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Akbar Hossain",
+            "email": "akbarhossain15@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^5.19"
+    }
+}

@@ -1,0 +1,30 @@
+version: "3"
+networks:
+    basic:
+        driver: bridge
+
+services:
+    nginx:
+        networks:
+            - basic
+        build:
+            dockerfile: docker/nginx/Dockerfile
+            context: .
+        ports:
+            - "8000:80"
+        volumes:
+            - .:/var/www/html
+        links:
+            - fpm
+        container_name: press_nginx
+    fpm:
+        networks:
+            - basic
+        volumes:
+            - .:/var/www/html
+        ports:
+            - "9000:9000"
+        build:
+            context: .
+            dockerfile: docker/fpm/Dockerfile
+        container_name: press_fpm
