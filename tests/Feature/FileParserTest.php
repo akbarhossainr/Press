@@ -12,7 +12,7 @@ class FileParserTest extends TestCase
     public function the_head_and_body_get_split()
     {
         $fileParser = new FileParser(__DIR__. '/../blogs/template1.md');
-        $content = $fileParser->getContent();
+        $content = $fileParser->getRawContent();
 
         $this->assertContains("title: My Title", $content[1]);
         $this->assertContains("description: Post description", $content[1]);
@@ -42,7 +42,7 @@ class FileParserTest extends TestCase
     public function a_string_can_also_be_parsed_instead_file()
     {
         $fileParser = new FileParser("---\ntitle: My Title\n---\n\nBlog post body...");
-        $content = $fileParser->getContent();
+        $content = $fileParser->getRawContent();
 
         $this->assertContains("title: My Title", $content[1]);
         $this->assertContains('Blog post body...', $content[2]);
@@ -56,6 +56,15 @@ class FileParserTest extends TestCase
 
         $this->assertInstanceOf(Carbon::class, $content['date']);
         $this->assertEquals('12/07/2021', $content['date']->format('d/m/Y'));
+    }
+
+    /** @test */
+    public function an_extra_filed_get_saved()
+    {
+        $fileParser = new FileParser("---\nauthor: Akbar Hossain\nimage: some\image\src\n---\n");
+        $content = $fileParser->getContent();
+
+        $this->assertEquals(json_encode(['author' => 'Akbar Hossain', 'image' => 'some\image\src']), $content['extra']);
     }
 
 }
