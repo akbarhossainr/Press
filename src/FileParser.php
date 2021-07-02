@@ -1,8 +1,9 @@
 <?php
+
 namespace akbarhossainr\Press;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class FileParser
 {
@@ -42,10 +43,13 @@ class FileParser
     protected function processFields()
     {
         foreach ($this->content as $field => $value) {
-            if ($field === 'date') {
-                $this->content[$field] = Carbon::parse($value);
-            } elseif ($field === 'body') {
-                $this->content[$field] = MarkdownParser::parse($value);
+            $class = 'akbarhossainr\\Press\\Fields\\' . Str::title($field);
+
+            if (class_exists($class) && method_exists($class, 'process')) {
+                $this->content = array_merge(
+                    $this->content,
+                    $class::process($field, $value)
+                );
             }
         }
     }
