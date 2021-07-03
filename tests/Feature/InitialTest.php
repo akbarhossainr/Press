@@ -1,8 +1,6 @@
 <?php
 namespace akbarhossainr\Press\Tests;
 
-use Orchestra\Testbench\TestCase;
-
 class InitialTest extends TestCase
 {
     /** @test */
